@@ -78,3 +78,36 @@ olan verileri sıralayınız.
 ```SQL
 SELECT * FROM film WHERE title LIKE 'C%' AND length>90 AND rental_rate = 2.99
 ```
+<hr>
+
+## ÖDEV 4
+
+1. <b>film</b> tablosunda bulunan <b>replacement_cost</b> sütununda bulunan birbirinden farklı değerleri sıralayınız.
+
+```SQL
+SELECT DISTINCT replacement_cost FROM film 
+```
+
+2. <b>film</b> tablosunda bulunan <b>replacement_cost</b> sütununda birbirinden farklı kaç tane veri vardır?
+
+```SQL
+SELECT COUNT(DISTINCT replacement_cost) FROM film
+```
+
+3. <b>film</b> tablosunda bulunan film isimlerinde (title) kaç tanesini T karakteri ile başlar ve aynı zamanda rating 'G' ye eşittir?
+
+```SQL
+SELECT COUNT * FROM film WHERE LIKE 'T%' AND rating = 'G'
+```
+
+4. <b>country</b> tablosunda bulunan ülke isimlerinden (country) kaç tanesi 5 karakterden oluşmaktadır?
+
+```SQL
+SELECT COUNT * FROM country WHERE LIKE '_____'
+```
+
+5. <b>city</b> tablosundaki şehir isimlerinin kaçtanesi 'R' veya r karakteri ile biter?
+
+```SQL
+SELECT COUNT * FROM  city WHERE city_names ILIKE '%r' 
+```
