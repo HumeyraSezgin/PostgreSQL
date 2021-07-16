@@ -28,7 +28,7 @@ SELECT * FROM film WHERE  NOT length>50 AND (rental_rate =2.99 OR rental_rate = 
 
 <hr>
 
-## Ödev 2
+## ÖDEV 2
 
 1. <b>film</b> tablosunda bulunan tüm sütunlardaki verileri replacement cost değeri 12.99 dan büyük eşit ve 16.99 küçük olma koşuluyla sıralayınız ( BETWEEN - AND yapısını kullanınız.)
 ```SQL
@@ -51,24 +51,24 @@ SELECT * FROM film WHERE (rental_rate IN (0.99, 2.99, 4.99)) AND (replacement_co
 
 <hr>
 
-## Ödev 3
+## ÖDEV 3
 
 1. <b>country</b> tablosunda bulunan <b>country</b> sütunundaki ülke isimlerinden 'A' karakteri ile başlayıp 'a' karakteri ile sonlananları sıralayınız.
 
 ```SQL
- SELECT * FROM country  WHERE country LIKE  'A%a'
+ SELECT country FROM country  WHERE country LIKE  'A%a'
 ```
 
 2. <b>country</b> tablosunda bulunan <b>country</b> sütunundaki ülke isimlerinden en az 6 karakterden oluşan ve sonu 'n' karakteri ile sonlananları sıralayınız.
 
 ```SQL
-SELECT * FROM country WHERE country LIKE '_____%n'
+SELECT country FROM country WHERE country LIKE '_____%n'
 ```
 
 3. <b>film</b> tablosunda bulunan <b>title</b> sütunundaki film isimlerinden en az 4 adet büyük ya da küçük harf farketmesizin 'T' karakteri içeren film isimlerini sıralayınız.
 
 ```SQL
-SELECT * FROM film WHERE title ILIKE '%t%t%t%t%'
+SELECT title FROM film WHERE title ILIKE '%t%t%t%t%'
 ```
 
 
@@ -110,4 +110,27 @@ SELECT COUNT * FROM country WHERE LIKE '_____'
 
 ```SQL
 SELECT COUNT * FROM  city WHERE city_names ILIKE '%r' 
+```
+
+
+<hr>
+
+## ÖDEV 5
+
+1. <b>film</b> tablosunda bulunan ve film ismi (title) 'n' karakteri ile biten en uzun (length) 5 filmi sıralayınız.
+
+```SQL
+SELECT * FROM film WHERE title LIKE '%n' ORDER BY length DESC LIMIT 5
+```
+
+2. <b>film</b> tablosunda bulunan ve film ismi (title) 'n' karakteri ile biten en kısa (length) ikinci 5 filmi sıralayınız.
+
+```SQL
+SELECT * FROM film WHERE  title LIKE '%n' ORDER BY length OFFSET 5 LIMIT 5
+```
+
+3. <b>customer</b> tablosunda bulunan last_name sütununa göre azalan yapılan sıralamada store_id 1 olmak koşuluyla ilk 4 veriyi sıralayınız.
+
+```SQL
+SELECT * FROM customer WHERE store_id = 1 ORDER BY last_name DESC LIMIT 4
 ```
