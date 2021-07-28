@@ -286,3 +286,27 @@ WHERE id IN (10,12,13,15,17)
 DELETE FROM employee
 WHERE id IN(10,12,13,15,17)
 ```
+
+
+<br>
+
+## ÖDEV 9
+
+1. <b>city</b> tablosu ile <b>country</b> tablosunda bulunan şehir (city) ve ülke (country) isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
+
+```SQL
+SELECT city.name, country.name FROM city JOIN country ON city.country_id = country.country_id
+```
+
+2. <b>customer</b> tablosu ile <b>payment</b> tablosunda bulunan payment_id ile customer tablosundaki first_name ve last_name isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
+
+```SQL
+SELECT payment_id, first_name, last_name FROM customer JOIN payment ON customer.customer_id = payment.customer_id
+```
+
+
+3. <b>customer</b> tablosu ile <b>rental</b> tablosunda bulunan rental_id ile customer tablosundaki first_name ve last_name isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
+
+```SQL
+SELECT rental_id, first_name, last_name FROM customer JOIN rental ON customer.customer_id = rental.customer_id
+```
