@@ -288,7 +288,7 @@ WHERE id IN(10,12,13,15,17)
 ```
 
 
-<br>
+<hr>
 
 ## ÖDEV 9
 
@@ -311,7 +311,7 @@ SELECT payment_id, first_name, last_name FROM customer JOIN payment ON customer.
 SELECT rental_id, first_name, last_name FROM customer JOIN rental ON customer.customer_id = rental.customer_id
 ```
 
-<br>
+<hr>
 
 ## ÖDEV 10
 
@@ -333,7 +333,7 @@ SELECT payment_id, first_name, last_name FROM customer RIGHT JOIN payment ON cus
 SELECT rental_id, first_name, last_name FROM customer FULL JOIN rental ON customer.customer_id = payment.customer_id
 ```
 
-<br>
+<hr>
 
 ## ÖDEV 11
 
@@ -368,3 +368,34 @@ SELECT rental_id, first_name, last_name FROM customer FULL JOIN rental ON custom
     3. ```SQL
         (SELECT first_name FROM actor) EXCEPT ALL (SELECT first_name FROM customer)
         ```
+
+
+<hr>
+
+## ÖDEV 12 
+
+1. <b>film</b> tablosunda film uzunluğu <b>length</b> sütununda gösterilmektedir. Uzunluğu ortalama film uzunluğundan fazla kaç tane film vardır?
+
+```SQL
+SELECT COUNT(*) FROM film WHERE length>(
+    SELECT AVG(length) FROM film
+)
+```
+
+2. <b>film</b> tablosunda en yüksek rental_rate değerine sahip kaç tane film vardır?
+
+```SQL
+SELECT COUNT(*) FROM film WHERE rental_rate=(SELECT MAX(rental_rate) FROM film)
+```
+
+3. <b>film</b> tablosunda en düşük rental_rate ve en düşün replacement_cost değerlerine sahip filmleri sıralayınız.
+
+```SQL
+SELECT * FROM film WHERE replacement_cost = (SELECT MİN(replacement_cost) FROM film) AND (SELECT MİN(rental_rate) FROM film)
+```
+
+4. <b>payment</b> tablosunda en fazla sayıda alışveriş yapan müşterileri(customer) sıralayınız.
+
+```SQL
+SELECT * FROM payment WHERE customer = (SELECT customer_id FROM payment WHERE amount(SELECT MAX(amount) FROM payment))
+```
